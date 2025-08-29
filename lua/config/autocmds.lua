@@ -11,4 +11,15 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Disable listchars in terminal windows only
+vim.api.nvim_create_autocmd({ 'TermOpen', 'BufWinEnter' }, {
+  desc = 'Turn off list in terminal buffers',
+  group = vim.api.nvim_create_augroup('terminal-no-list', { clear = true }),
+  callback = function(args)
+    if vim.bo[args.buf].buftype == 'terminal' then
+      vim.opt_local.list = false
+    end
+  end,
+})
+
 
