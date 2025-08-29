@@ -25,7 +25,7 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 
--- Undo history (disabled as per current config)
+-- Save undo history between opening and closing of the file
 vim.o.undofile = false
 
 -- Searching
@@ -43,4 +43,15 @@ vim.o.cursorline = true
 vim.o.scrolloff = 10
 vim.o.confirm = true
 
+-- Separator between neovim windows
+vim.opt.fillchars = {
+  vert = '█', -- vertical split
+  horiz = '█', -- horizontal split
+  horizup = '█',
+  horizdown = '█',
+  vertleft = '█',
+  vertright = '█',
+  verthoriz = '█',
+}
 
+vim.opt.colorcolumn = '100'
