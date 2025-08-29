@@ -1,12 +1,22 @@
 return {
-  'catppuccin/nvim',
-  name = 'catppuccin',
-  priority = 1000,
-  config = function()
-    ---@diagnostic disable-next-line: missing-fields
-    require('catppuccin').setup { no_italic = true }
-    vim.cmd.colorscheme 'catppuccin-macchiato'
-  end,
+  {
+    'catppuccin/nvim',
+    name = 'catppuccin',
+    priority = 1000,
+    config = function()
+      ---@diagnostic disable-next-line: missing-fields
+      require('catppuccin').setup { no_italic = true }
+      vim.cmd.colorscheme 'catppuccin-macchiato'
+    end,
+  },
+  {
+    'nordtheme/vim',
+    name = 'nord',
+    priority = 1000,
+  },
+  {
+    'morhetz/gruvbox',
+    name = 'gruvbox',
+    priority = 1000,
+  },
 }
-
-
