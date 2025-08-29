@@ -103,6 +103,13 @@ require 'config.autocmds'
 -- Load custom floating terminal implementation
 require 'floaterminal'
 
+-- Disable providers to clear warnings in :checkhealth
+-- These may need to be adjusted to allow for new plugins in the future
+vim.g.loaded_ruby_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_node_provider = 0
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -132,6 +139,7 @@ rtp:prepend(lazypath)
 require('lazy').setup({
   { import = 'plugins' },
 }, {
+  rocks = { enabled = false, hererocks = false },
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
