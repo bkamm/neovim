@@ -25,4 +25,5 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 -- floaterminal
 vim.keymap.set('n', '<leader>tt', '<cmd>Floaterminal<CR>', { desc = 'Toggle floating terminal' })
-vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+-- Uncomment the below line to allow <ESC><ESC> to exit terminal mode. Currently commented out to improve lazygit workflow
+-- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
