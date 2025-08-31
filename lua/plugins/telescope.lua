@@ -41,6 +41,10 @@ return {
       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
         winblend = 10,
         previewer = false,
+        layout_config = {
+          height = 0.5,
+          width = 0.5,
+        },
       })
     end, { desc = '[/] Fuzzily search in current buffer' })
 
@@ -56,5 +60,3 @@ return {
     end, { desc = '[S]earch [C]onfig files' })
   end,
 }
-
-
