@@ -15,8 +15,12 @@ return {
     priority = 1000,
   },
   {
-    'morhetz/gruvbox',
-    name = 'gruvbox',
+    'ellisonleao/gruvbox.nvim',
     priority = 1000,
+    config = true,
+    opts = {
+      bold = false,
+      -- italic = { strings = false, comments = false, operators = false, folds = false },
+    },
   },
 }
