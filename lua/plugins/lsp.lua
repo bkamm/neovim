@@ -22,8 +22,8 @@ return {
         map('<leader>gi', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
         map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
         map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-        map('gs', require('telescope.builtin').lsp_document_symbols, 'Open Document [S]ymbols')
-        map('gS', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace [S]ymbols')
+        map('<leader>ss', require('telescope.builtin').lsp_document_symbols, '[S]earch Document [S]ymbols')
+        map('<leader>sS', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[S]earch Workspace [S]ymbols')
         map('<leader>gt', require('telescope.builtin').lsp_type_definitions, '[G]oto [T]ype Definition')
         map('<leader>K', vim.lsp.buf.hover, 'Hover Documentation')
 
