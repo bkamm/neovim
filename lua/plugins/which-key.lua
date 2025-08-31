@@ -41,6 +41,7 @@ return {
       { '<leader>t', group = '[T]oggle' },
       { '<leader>l', group = '[L]azy' },
       { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
+      { 'gr', group = 'LSP Actions' },
     },
   },
 }
