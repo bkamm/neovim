@@ -93,7 +93,6 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
-
 -- Disable providers to clear warnings in :checkhealth
 -- These may need to be adjusted to allow for new plugins in the future
 vim.g.loaded_ruby_provider = 0
