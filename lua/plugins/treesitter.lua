@@ -25,6 +25,7 @@ return {
       'HTML',
       'css',
       'tmux',
+      'swift',
     },
     auto_install = true,
     highlight = {

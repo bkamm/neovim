@@ -16,14 +16,6 @@ return {
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        -- Some keymaps are created unconditionally when Nvim starts:
-        -- - "grn" is mapped in Normal mode to |vim.lsp.buf.rename()|
-        -- - "gra" is mapped in Normal and Visual mode to |vim.lsp.buf.code_action()|
-        -- - "grr" is mapped in Normal mode to |vim.lsp.buf.references()|
-        -- - "gri" is mapped in Normal mode to |vim.lsp.buf.implementation()|
-        -- - "gO" is mapped in Normal mode to |vim.lsp.buf.document_symbol()|
-        -- - CTRL-S is mapped in Insert mode to |vim.lsp.buf.signature_help()|
-
         map('grn', vim.lsp.buf.rename, 'Rename')
         map('gra', vim.lsp.buf.code_action, 'Code [A]ction', { 'n', 'x' })
         map('grr', require('telescope.builtin').lsp_references, 'View [R]eferences')

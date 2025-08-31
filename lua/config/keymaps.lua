@@ -27,3 +27,16 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 vim.keymap.set('n', '<leader>tt', '<cmd>Floaterminal<CR>', { desc = 'Toggle floating terminal' })
 -- Uncomment the below line to allow <ESC><ESC> to exit terminal mode. Currently commented out to improve lazygit workflow
 -- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- nvim-treesitter repeatable move keymaps
+local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
+
+-- Make ; always go to next and , always go to previous
+vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move_next, { desc = 'Repeat last Treesitter move forward' })
+vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_previous, { desc = 'Repeat last Treesitter move backward' })
+
+-- Also make f/F/t/T repeatable with ; and ,
+vim.keymap.set({ 'n', 'x', 'o' }, 'f', ts_repeat_move.builtin_f_expr, { expr = true })
+vim.keymap.set({ 'n', 'x', 'o' }, 'F', ts_repeat_move.builtin_F_expr, { expr = true })
+vim.keymap.set({ 'n', 'x', 'o' }, 't', ts_repeat_move.builtin_t_expr, { expr = true })
+vim.keymap.set({ 'n', 'x', 'o' }, 'T', ts_repeat_move.builtin_T_expr, { expr = true })

@@ -93,15 +93,6 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
--- Options moved to `lua/config/options.lua`
-
--- [[ Load modular config ]]
-require 'config.options'
-require 'config.keymaps'
-require 'config.autocmds'
-
--- Load custom floating terminal implementation
-require 'floaterminal'
 
 -- Disable providers to clear warnings in :checkhealth
 -- These may need to be adjusted to allow for new plugins in the future
@@ -160,6 +151,16 @@ require('lazy').setup({
     },
   },
 })
+
+-- Options moved to `lua/config/options.lua`
+
+-- [[ Load modular config ]]
+require 'config.options'
+require 'config.keymaps'
+require 'config.autocmds'
+
+-- Load custom floating terminal implementation
+require 'floaterminal'
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

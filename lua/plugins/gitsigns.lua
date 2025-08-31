@@ -11,6 +11,7 @@ return {
     },
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'
+      local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
 
       local function map(mode, l, r, opts)
         opts = opts or {}
@@ -18,22 +19,29 @@ return {
         vim.keymap.set(mode, l, r, opts)
       end
 
-      -- Navigation
-      map('n', ']g', function()
+      -- Define forward/backward hunk motions (respecting diff mode)
+      local function gs_next()
         if vim.wo.diff then
           vim.cmd.normal { ']c', bang = true }
         else
           gitsigns.nav_hunk 'next'
         end
-      end, { desc = 'Jump to next [g]it change' })
+      end
 
-      map('n', '[g', function()
+      local function gs_prev()
         if vim.wo.diff then
           vim.cmd.normal { '[c', bang = true }
         else
           gitsigns.nav_hunk 'prev'
         end
-      end, { desc = 'Jump to previous [g]it change' })
+      end
+
+      -- Make them repeatable with ts_repeat_move
+      local gs_next_repeat, gs_prev_repeat = ts_repeat_move.make_repeatable_move_pair(gs_next, gs_prev)
+
+      -- Navigation (now repeatable)
+      map('n', ']g', gs_next_repeat, { desc = 'Jump to next [g]it change' })
+      map('n', '[g', gs_prev_repeat, { desc = 'Jump to previous [g]it change' })
 
       -- Actions
       -- visual mode
