@@ -60,9 +60,6 @@ return {
           -- Blocks
           ['ab'] = '@block.outer',
           ['ib'] = '@block.inner',
-          -- Loops
-          ['al'] = '@loop.outer',
-          ['il'] = '@loop.inner',
           -- Parameters
           ['aa'] = '@parameter.outer',
           ['ia'] = '@parameter.inner',
@@ -79,26 +76,22 @@ return {
         goto_next_start = {
           [']f'] = '@function.outer',
           [']c'] = '@class.outer',
-          [']l'] = '@loop.outer',
           [']a'] = '@parameter.inner',
           [']z'] = '@fold',
         },
         goto_next_end = {
           [']F'] = '@function.outer',
           [']C'] = '@class.outer',
-          [']L'] = '@loop.outer',
         },
         goto_previous_start = {
           ['[f'] = '@function.outer',
           ['[c'] = '@class.outer',
-          ['[l'] = '@loop.outer',
           ['[a'] = '@parameter.inner',
           ['[z'] = '@fold',
         },
         goto_previous_end = {
           ['[F'] = '@function.outer',
           ['[C'] = '@class.outer',
-          ['[L'] = '@loop.outer',
         },
       },
 
