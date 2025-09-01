@@ -4,7 +4,7 @@ return {
     require('mini.ai').setup { n_lines = 500 }
     require('mini.surround').setup()
     require('mini.icons').setup()
-    require('mini.tabline').setup()
+    -- require('mini.tabline').setup() -- Uncomment and delete bufferline to enable more simple tabline
     require('mini.jump2d').setup()
     require('mini.jump').setup()
     local jump = require 'mini.jump'
