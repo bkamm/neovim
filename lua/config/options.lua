@@ -24,6 +24,8 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
+vim.o.smartindent = true
+vim.o.autoindent = true
 
 -- Save undo history between opening and closing of the file
 vim.o.undofile = false

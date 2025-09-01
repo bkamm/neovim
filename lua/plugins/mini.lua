@@ -3,6 +3,15 @@ return {
   config = function()
     require('mini.ai').setup { n_lines = 500 }
     require('mini.surround').setup()
+    require('mini.jump2d').setup()
+    require('mini.jump').setup()
+    local jump = require 'mini.jump'
+    jump.setup {
+      delay = {
+        highlight = 0,
+        idle_stop = 100000000,
+      },
+    }
 
     local map = require 'mini.map'
     map.setup {
