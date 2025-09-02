@@ -43,6 +43,7 @@ vim.o.splitbelow = true
 vim.o.inccommand = 'split'
 vim.o.cursorline = true
 vim.o.scrolloff = 10
+vim.o.sidescrolloff = 10
 vim.o.confirm = true
 
 -- Separator between neovim windows
@@ -57,3 +58,7 @@ vim.opt.fillchars = {
 }
 
 vim.opt.colorcolumn = '100'
+
+-- Make line numbers more visible
+vim.api.nvim_set_hl(0, 'LineNr', { fg = '#7c7f93', bold = false })
+vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#ffcc00', bold = true })

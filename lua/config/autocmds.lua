@@ -22,4 +22,13 @@ vim.api.nvim_create_autocmd({ 'TermOpen', 'BufWinEnter' }, {
   end,
 })
 
-
+-- Persist line number highlights across colorscheme changes
+vim.api.nvim_create_autocmd('ColorScheme', {
+  desc = 'Keep custom line number colors when changing colorschemes',
+  group = vim.api.nvim_create_augroup('persist-line-numbers', { clear = true }),
+  pattern = '*',
+  callback = function()
+    vim.api.nvim_set_hl(0, 'LineNr', { fg = '#7c7f93', bold = false })
+    vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#ffcc00', bold = true })
+  end,
+})
