@@ -51,5 +51,8 @@ return {
     vim.keymap.set('n', '<leader>n', function()
       harpoon:list():next()
     end, { desc = 'Harpoon: [N]ext file' })
+
+    local harpoon_extensions = require 'harpoon.extensions'
+    harpoon:extend(harpoon_extensions.builtins.highlight_current_file())
   end,
 }
