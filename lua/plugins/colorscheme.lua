@@ -6,7 +6,7 @@ return {
     config = function()
       ---@diagnostic disable-next-line: missing-fields
       require('catppuccin').setup { no_italic = true }
-      -- vim.cmd.colorscheme 'catppuccin-macchiato'
+      vim.cmd.colorscheme 'catppuccin-macchiato'
     end,
   },
   {
@@ -32,10 +32,10 @@ return {
         styles = {
           bold = false,
           italic = false,
-          transparency = true,
+          transparency = false,
         },
       }
-      vim.cmd.colorscheme 'rose-pine'
+      -- vim.cmd.colorscheme 'rose-pine'
     end,
   },
 }
