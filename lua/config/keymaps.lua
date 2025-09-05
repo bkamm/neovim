@@ -5,10 +5,10 @@
 vim.keymap.set('i', 'jj', '<ESC>')
 
 -- Navigate up/down half pages with J and K
-vim.keymap.set('n', 'J', '10jzz')
-vim.keymap.set('n', 'K', '10kzz')
-vim.keymap.set('v', 'J', '10jzz')
-vim.keymap.set('v', 'K', '10kzz')
+vim.keymap.set('n', 'J', '10j')
+vim.keymap.set('n', 'K', '10k')
+vim.keymap.set('v', 'J', '10j')
+vim.keymap.set('v', 'K', '10k')
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 -- See `:help hlsearch`
