@@ -5,10 +5,10 @@
 vim.keymap.set('i', 'jj', '<ESC>')
 
 -- Navigate up/down half pages with J and K
-vim.keymap.set('n', 'J', '10j')
-vim.keymap.set('n', 'K', '10k')
-vim.keymap.set('v', 'J', '10j')
-vim.keymap.set('v', 'K', '10k')
+vim.keymap.set('n', 'J', '<C-d>zz')
+vim.keymap.set('n', 'K', '<C-u>zz')
+vim.keymap.set('v', 'J', '<C-d>zz')
+vim.keymap.set('v', 'K', '<C-u>zz')
 
 -- Clear highlights on search when pressing <Esc> in normal mode
 -- See `:help hlsearch`
@@ -40,3 +40,9 @@ vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_previous,
 -- vim.keymap.set({ 'n', 'x', 'o' }, 'T', ts_repeat_move.builtin_T_expr, { expr = true })
 
 vim.keymap.set('n', '<leader>q', '<cmd>bd<CR>', { desc = 'Close current buffer' })
+
+vim.keymap.set('n', '<leader>Y', function()
+  local v = vim.fn.winsaveview()
+  vim.cmd 'keepjumps normal! ggVG"+y'
+  vim.fn.winrestview(v)
+end, { desc = 'Yank whole buffer into clipboard' })

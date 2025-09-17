@@ -62,3 +62,6 @@ vim.opt.colorcolumn = '100'
 -- Make line numbers more visible
 vim.api.nvim_set_hl(0, 'LineNr', { fg = '#7c7f93', bold = false })
 vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#ffcc00', bold = true })
+
+vim.o.wrap = true
+vim.o.linebreak = true
