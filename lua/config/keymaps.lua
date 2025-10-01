@@ -46,3 +46,7 @@ vim.keymap.set('n', '<leader>Y', function()
   vim.cmd 'keepjumps normal! ggVG"+y'
   vim.fn.winrestview(v)
 end, { desc = 'Yank whole buffer into clipboard' })
+
+vim.keymap.set('n', '<leader>V', 'GVgg', { desc = 'Select whole buffer' })
+
+--TODO: Look into using 'jj' to exit terminal mode
