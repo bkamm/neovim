@@ -14,6 +14,12 @@ return {
     },
   },
   config = function()
-    vim.cmd [[do FileType]]
+    vim.cmd [[
+      function OpenMarkdownPreview(url)
+        execute "silent ! open -a 'Google Chrome' -n --args --new-window " . a:url
+      endfunction
+      let g:mkdp_browserfunc = 'OpenMarkdownPreview'
+      do FileType
+    ]]
   end,
 }
