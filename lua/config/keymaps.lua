@@ -63,3 +63,5 @@ vim.keymap.set('n', '<leader>ce', function()
   vim.cmd 'Copilot enable'
   vim.notify 'Copilot enabled'
 end, { desc = '[E]nable GitHub Copilot' })
+
+vim.keymap.set('n', '<leader>ta', '<cmd>AerialToggle<CR>', { desc = 'Toggle Aerial' })
