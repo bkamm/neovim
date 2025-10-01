@@ -14,5 +14,5 @@ return {
   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
   lazy = false,
 
-  vim.keymap.set('n', '<leader>ex', '<CMD>Oil<CR>', { desc = 'Open parent directory' }),
+  vim.keymap.set('n', '<leader>e', '<CMD>Oil<CR>', { desc = '[E]xplore current directory' }),
 }

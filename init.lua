@@ -155,6 +155,7 @@ require('lazy').setup({
 
 -- [[ Load modular config ]]
 require 'config.options'
+require 'config.functions'
 require 'config.keymaps'
 require 'config.autocmds'
 

@@ -50,3 +50,16 @@ end, { desc = 'Yank whole buffer into clipboard' })
 vim.keymap.set('n', '<leader>V', 'GVgg', { desc = 'Select whole buffer' })
 
 --TODO: Look into using 'jj' to exit terminal mode
+
+vim.keymap.set('n', '<leader>wr', Resize_loop, { desc = 'Enter fluid window resize mode' })
+vim.keymap.set('n', '<leader>wn', '<cmd>vnew<CR>', { desc = 'Open new vertical split' })
+vim.keymap.set('n', '<leader>wN', '<cmd>new<CR>', { desc = 'Open new horizontal split' })
+
+vim.keymap.set('n', '<leader>cd', function()
+  vim.cmd 'Copilot disable'
+  vim.notify 'Copilot disabled'
+end, { desc = '[D]isable GitHub Copilot' })
+vim.keymap.set('n', '<leader>ce', function()
+  vim.cmd 'Copilot enable'
+  vim.notify 'Copilot enabled'
+end, { desc = '[E]nable GitHub Copilot' })
