@@ -8,10 +8,30 @@ return {
     -- REQUIRED
     harpoon:setup()
     -- REQUIRED
-
     vim.keymap.set('n', '<leader>a', function()
       harpoon:list():add()
+      vim.cmd 'redrawtabline'
     end, { desc = 'Harpoon: [A]dd file' })
+
+    vim.keymap.set('n', '<leader>r', function()
+      local list = harpoon:list()
+      list:remove()
+      -- Compact the list to remove nil entries
+      local compacted = {}
+      for i = 1, #list.items do
+        local item = list.items[i]
+        if item and item.value and item.value ~= '' then
+          table.insert(compacted, item)
+        end
+      end
+      list.items = compacted
+      vim.cmd 'redrawtabline'
+    end, { desc = 'Harpoon: [R]emove file' })
+
+    -- vim.keymap.set('n', '<leader>a', function()
+    --   harpoon:list():add()
+    -- end, { desc = 'Harpoon: [A]dd file' })
+    --
     vim.keymap.set('n', '<leader>h', function()
       harpoon.ui:toggle_quick_menu(harpoon:list())
     end, { desc = 'Harpoon: Toggle menu' })
