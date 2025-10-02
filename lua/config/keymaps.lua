@@ -65,3 +65,5 @@ vim.keymap.set('n', '<leader>ce', function()
 end, { desc = '[E]nable GitHub Copilot' })
 
 vim.keymap.set('n', '<leader>ta', '<cmd>AerialToggle<CR>', { desc = 'Toggle Aerial' })
+
+vim.keymap.set('n', '<leader>bn', '<cmd>enew<CR>', { desc = 'Open new buffer' })
