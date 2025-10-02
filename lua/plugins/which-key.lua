@@ -44,6 +44,7 @@ return {
       { '<leader>g', group = '[G]it' },
       { '<leader>m', group = '[M]iniMap' },
       { '<leader>w', group = '[W]indow' },
+      { 'gs', group = '[S]urround' },
       { 'gr', group = 'LSP Actions' },
       { '<leader>1', hidden = true },
       { '<leader>2', hidden = true },

@@ -16,14 +16,14 @@ return {
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
         end
 
-        map('grn', vim.lsp.buf.rename, 'Rename')
+        map('grn', vim.lsp.buf.rename, '[R]ename')
         map('gra', vim.lsp.buf.code_action, 'Code [A]ction', { 'n', 'x' })
         map('grr', require('telescope.builtin').lsp_references, 'View [R]eferences')
         map('gri', require('telescope.builtin').lsp_implementations, 'Goto [I]mplementation')
         map('grd', require('telescope.builtin').lsp_definitions, 'Goto [D]efinition')
         map('grD', vim.lsp.buf.declaration, 'Goto [D]eclaration')
-        map('gO', require('telescope.builtin').lsp_document_symbols, 'Search Document [S]ymbols')
-        map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Search Workspace [S]ymbols')
+        map('gO', require('telescope.builtin').lsp_document_symbols, 'Search Document Symbols')
+        map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Search Workspace Symbols')
         map('grt', require('telescope.builtin').lsp_type_definitions, 'Goto [T]ype Definition')
         map('<leader>K', vim.lsp.buf.hover, 'Hover Documentation')
 

@@ -2,18 +2,30 @@ return {
   'echasnovski/mini.nvim',
   config = function()
     require('mini.ai').setup { n_lines = 500 }
-    require('mini.surround').setup()
-    require('mini.icons').setup()
-    -- require('mini.tabline').setup() -- Uncomment and delete bufferline to enable more simple tabline
-    require('mini.jump2d').setup()
-    require('mini.jump').setup()
-    local jump = require 'mini.jump'
-    jump.setup {
-      delay = {
-        highlight = 0,
-        idle_stop = 100000000,
+    require('mini.surround').setup {
+      mappings = {
+        add = 'gsa', -- Add surrounding in Normal and Visual modes
+        delete = 'gsd', -- Delete surrounding
+        find = 'gsf', -- Find surrounding (to the right)
+        find_left = 'gsF', -- Find surrounding (to the left)
+        highlight = 'gsh', -- Highlight surrounding
+        replace = 'gsr', -- Replace surrounding
+
+        suffix_last = 'l', -- Suffix to search with "prev" method
+        suffix_next = 'n', -- Suffix to search with "next" method
       },
     }
+    require('mini.icons').setup()
+    -- require('mini.tabline').setup() -- Uncomment and delete bufferline to enable more simple tabline
+    -- require('mini.jump2d').setup() -- Using flash.nvim instead
+    -- require('mini.jump').setup() -- Using flash.nvim instead
+    -- local jump = require 'mini.jump'
+    -- jump.setup {
+    --   delay = {
+    --     highlight = 0,
+    --     idle_stop = 100000000,
+    --   },
+    -- }
 
     local map = require 'mini.map'
     map.setup {
