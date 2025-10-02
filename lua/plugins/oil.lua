@@ -7,6 +7,13 @@ return {
     view_options = {
       show_hidden = true,
     },
+    keymaps = {
+      -- Disabled the following to avoid conflicts with vim-tmux-navigator
+      ['<C-j>'] = false,
+      ['<C-k>'] = false,
+      ['<C-h>'] = false,
+      ['<C-l>'] = false,
+    },
   },
   -- Optional dependencies
   dependencies = { { 'echasnovski/mini.icons', opts = {} } },
@@ -16,3 +23,5 @@ return {
 
   vim.keymap.set('n', '<leader>e', '<CMD>Oil<CR>', { desc = '[E]xplore current directory' }),
 }
+
+-- NOTE: use - to go up a directory and _ to go to the projects current working directory

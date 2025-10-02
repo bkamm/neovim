@@ -59,5 +59,20 @@ return {
     vim.keymap.set('n', '<leader>sc', function()
       builtin.find_files { cwd = vim.fn.stdpath 'config' }
     end, { desc = '[S]earch [C]onfig files' })
+
+    vim.keymap.set('n', '<leader>sF', function()
+      builtin.find_files {
+        find_command = { 'fd', '--type', 'd', '--hidden', '--exclude', '.git' },
+        attach_mappings = function(prompt_bufnr, _)
+          local actions = require 'telescope.actions'
+          actions.select_default:replace(function()
+            actions.close(prompt_bufnr)
+            local selection = require('telescope.actions.state').get_selected_entry()
+            require('oil').open(selection[1])
+          end)
+          return true
+        end,
+      }
+    end, { desc = '[S]earch [F]olders (open with oil)' })
   end,
 }
