@@ -21,6 +21,10 @@ return {
         map('grr', require('telescope.builtin').lsp_references, 'View [R]eferences')
         map('gri', require('telescope.builtin').lsp_implementations, 'Goto [I]mplementation')
         map('grd', require('telescope.builtin').lsp_definitions, 'Goto [D]efinition')
+        map('grwnd', function()
+          vim.cmd 'vsplit'
+          vim.lsp.buf.definition()
+        end, 'Goto [D]efinition in new [W]indow')
         map('grD', vim.lsp.buf.declaration, 'Goto [D]eclaration')
         map('gO', require('telescope.builtin').lsp_document_symbols, 'Search Document Symbols')
         map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Search Workspace Symbols')
@@ -102,6 +106,20 @@ return {
           },
         },
       },
+      -- -- Enable Pyright with custom analysis settings
+      -- pyright = {
+      --   single_file_support = true,
+      --   settings = {
+      --     python = {
+      --       analysis = {
+      --         -- Adjust to your preference: 'off' | 'basic' | 'strict'
+      --         typeCheckingMode = 'off',
+      --         autoSearchPaths = true,
+      --         useLibraryCodeForTypes = true,
+      --       },
+      --     },
+      --   },
+      -- },
     }
 
     local ensure_installed = vim.tbl_keys(servers or {})

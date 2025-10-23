@@ -15,15 +15,37 @@ return {
 
     vim.keymap.set('n', '<leader>r', function()
       local list = harpoon:list()
-      list:remove()
-      -- Compact the list to remove nil entries
+      if not list or not list.items then
+        return
+      end
+
+      -- Normalize to realpath for stable comparisons
+      local function real(p)
+        if not p or p == '' then
+          return p
+        end
+        return vim.loop.fs_realpath(p) or p
+      end
+
+      local cur = real(vim.api.nvim_buf_get_name(0))
+
+      -- Rebuild items without the current buffer, preserving order
+      local keys = {}
+      for k, _ in pairs(list.items) do
+        if type(k) == 'number' then
+          table.insert(keys, k)
+        end
+      end
+      table.sort(keys)
+
       local compacted = {}
-      for i = 1, #list.items do
+      for _, i in ipairs(keys) do
         local item = list.items[i]
-        if item and item.value and item.value ~= '' then
+        if item and item.value and item.value ~= '' and real(item.value) ~= cur then
           table.insert(compacted, item)
         end
       end
+
       list.items = compacted
       vim.cmd 'redrawtabline'
     end, { desc = 'Harpoon: [R]emove file' })

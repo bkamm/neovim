@@ -33,27 +33,28 @@ vim.api.nvim_create_autocmd('ColorScheme', {
   end,
 })
 
--- autocmd: delete [No Name] buffers when leaving them, if unmodified
-vim.api.nvim_create_autocmd('BufLeave', {
-  callback = function(args)
-    local bufnr = args.buf
-    local name = vim.api.nvim_buf_get_name(bufnr)
-    local modified = vim.api.nvim_get_option_value('modified', { buf = bufnr })
-    local buftype = vim.api.nvim_get_option_value('buftype', { buf = bufnr })
-
-    -- matches unnamed, empty, unmodified buffers
-    if name == '' and not modified and buftype == '' then
-      -- Schedule the delete to happen after switching to the next buffer
-      vim.schedule(function()
-        if vim.api.nvim_buf_is_valid(bufnr) then
-          -- Before deleting, ensure the current buffer is properly loaded
-          local current = vim.api.nvim_get_current_buf()
-          if current ~= bufnr and vim.bo[current].filetype == '' and vim.api.nvim_buf_get_name(current) ~= '' then
-            vim.cmd 'edit'
-          end
-          vim.api.nvim_buf_delete(bufnr, { force = true })
-        end
-      end)
-    end
-  end,
-})
+-- I have commented this function out for now because it is causing splits to close when I open telescope
+-- -- autocmd: delete [No Name] buffers when leaving them, if unmodified
+-- vim.api.nvim_create_autocmd('BufLeave', {
+--   callback = function(args)
+--     local bufnr = args.buf
+--     local name = vim.api.nvim_buf_get_name(bufnr)
+--     local modified = vim.api.nvim_get_option_value('modified', { buf = bufnr })
+--     local buftype = vim.api.nvim_get_option_value('buftype', { buf = bufnr })
+--
+--     -- matches unnamed, empty, unmodified buffers
+--     if name == '' and not modified and buftype == '' then
+--       -- Schedule the delete to happen after switching to the next buffer
+--       vim.schedule(function()
+--         if vim.api.nvim_buf_is_valid(bufnr) then
+--           -- Before deleting, ensure the current buffer is properly loaded
+--           local current = vim.api.nvim_get_current_buf()
+--           if current ~= bufnr and vim.bo[current].filetype == '' and vim.api.nvim_buf_get_name(current) ~= '' then
+--             vim.cmd 'edit'
+--           end
+--           vim.api.nvim_buf_delete(bufnr, { force = true })
+--         end
+--       end)
+--     end
+--   end,
+-- })

@@ -17,7 +17,7 @@ return {
     }
     require('mini.icons').setup()
     -- require('mini.tabline').setup() -- Uncomment and delete bufferline to enable more simple tabline
-    -- require('mini.jump2d').setup() -- Using flash.nvim instead
+    require('mini.jump2d').setup() -- Similar use case to flash.nvim, but no conflicting keymaps so keeping
     -- require('mini.jump').setup() -- Using flash.nvim instead
     -- local jump = require 'mini.jump'
     -- jump.setup {

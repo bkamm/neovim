@@ -15,15 +15,6 @@ return {
     priority = 1000,
   },
   {
-    'ellisonleao/gruvbox.nvim',
-    priority = 1000,
-    config = true,
-    opts = {
-      bold = false,
-      -- italic = { strings = false, comments = false, operators = false, folds = false },
-    },
-  },
-  {
     'rose-pine/neovim',
     name = 'rose-pine',
     priority = 1000,
@@ -36,6 +27,16 @@ return {
         },
       }
       -- vim.cmd.colorscheme 'rose-pine'
+    end,
+  },
+  {
+    'sainnhe/gruvbox-material',
+    lazy = false,
+    priority = 1000,
+    config = function()
+      -- Optionally configure and load the colorscheme
+      -- directly inside the plugin declaration.
+      vim.g.gruvbox_material_enable_italic = false
     end,
   },
 }
