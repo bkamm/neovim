@@ -67,3 +67,6 @@ end, { desc = '[E]nable GitHub Copilot' })
 vim.keymap.set('n', '<leader>ta', '<cmd>AerialToggle<CR>', { desc = 'Toggle Aerial' })
 
 vim.keymap.set('n', '<leader>bn', '<cmd>enew<CR>', { desc = 'Open new buffer' })
+
+-- Leader J to join lines without moving cursor
+vim.keymap.set('n', '<leader>J', 'J', { desc = 'Join below line to current line' })
