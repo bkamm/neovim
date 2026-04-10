@@ -159,8 +159,10 @@ require 'config.functions'
 require 'config.keymaps'
 require 'config.autocmds'
 
--- Load custom floating terminal implementation
-require 'floaterminal'
+-- Load custom floating terminal implementation (not useful inside VSCode/Cursor Neovim)
+if not vim.g.vscode then
+  require 'floaterminal'
+end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

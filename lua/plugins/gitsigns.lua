@@ -1,5 +1,8 @@
+local not_vscode = require('config.env').not_vscode
+
 return {
   'lewis6991/gitsigns.nvim',
+  cond = not_vscode,
   opts = {
     current_line_blame = true,
     signs = {

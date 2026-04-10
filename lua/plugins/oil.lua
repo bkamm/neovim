@@ -1,5 +1,8 @@
+local not_vscode = require('config.env').not_vscode
+
 return {
   'stevearc/oil.nvim',
+  cond = not_vscode,
   ---@module 'oil'
   ---@type oil.SetupOpts
   opts = {
@@ -20,8 +23,9 @@ return {
   -- dependencies = { "nvim-tree/nvim-web-devicon" }, -- use if you prefer nvim-web-devicons
   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
   lazy = false,
-
-  vim.keymap.set('n', '<leader>e', '<CMD>Oil<CR>', { desc = '[E]xplore current directory' }),
+  keys = {
+    { '<leader>e', '<CMD>Oil<CR>', desc = '[E]xplore current directory' },
+  },
 }
 
 -- NOTE: use - to go up a directory and _ to go to the projects current working directory

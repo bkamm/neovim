@@ -1,5 +1,8 @@
+local not_vscode = require('config.env').not_vscode
+
 return {
   'nvim-telescope/telescope.nvim',
+  cond = not_vscode,
   event = 'VimEnter',
   dependencies = {
     'nvim-lua/plenary.nvim',

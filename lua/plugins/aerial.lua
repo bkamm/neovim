@@ -1,5 +1,8 @@
+local not_vscode = require('config.env').not_vscode
+
 return {
   'stevearc/aerial.nvim',
+  cond = not_vscode,
   opts = {},
   -- Optional dependencies
   dependencies = {

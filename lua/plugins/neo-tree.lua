@@ -1,6 +1,9 @@
+local not_vscode = require('config.env').not_vscode
+
 return {
   'nvim-neo-tree/neo-tree.nvim',
   version = '*',
+  cond = not_vscode,
   dependencies = {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',

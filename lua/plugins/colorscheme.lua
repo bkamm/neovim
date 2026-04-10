@@ -1,7 +1,10 @@
+local not_vscode = require('config.env').not_vscode
+
 return {
   {
     'catppuccin/nvim',
     name = 'catppuccin',
+    cond = not_vscode,
     priority = 1000,
     config = function()
       ---@diagnostic disable-next-line: missing-fields
@@ -12,11 +15,13 @@ return {
   {
     'nordtheme/vim',
     name = 'nord',
+    cond = not_vscode,
     priority = 1000,
   },
   {
     'rose-pine/neovim',
     name = 'rose-pine',
+    cond = not_vscode,
     priority = 1000,
     config = function()
       require('rose-pine').setup {
@@ -31,6 +36,7 @@ return {
   },
   {
     'sainnhe/gruvbox-material',
+    cond = not_vscode,
     lazy = false,
     priority = 1000,
     config = function()

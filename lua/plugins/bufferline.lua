@@ -1,6 +1,9 @@
+local not_vscode = require('config.env').not_vscode
+
 return {
   'akinsho/bufferline.nvim',
   version = '*',
+  cond = not_vscode,
   dependencies = 'nvim-tree/nvim-web-devicons',
   opts = function()
     local harpoon = require 'harpoon'

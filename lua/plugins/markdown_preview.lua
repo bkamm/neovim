@@ -1,5 +1,8 @@
+local not_vscode = require('config.env').not_vscode
+
 return {
   'iamcco/markdown-preview.nvim',
+  cond = not_vscode,
   cmd = { 'MarkdownPreviewToggle', 'MarkdownPreview', 'MarkdownPreviewStop' },
   build = function()
     require('lazy').load { plugins = { 'markdown-preview.nvim' } }

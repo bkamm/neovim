@@ -1,5 +1,8 @@
+local not_vscode = require('config.env').not_vscode
+
 return {
   'stevearc/conform.nvim',
+  cond = not_vscode,
   event = { 'BufWritePre' },
   cmd = { 'ConformInfo' },
   keys = {

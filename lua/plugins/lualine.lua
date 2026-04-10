@@ -1,6 +1,9 @@
+local not_vscode = require('config.env').not_vscode
+
 return {
   {
     'nvim-lualine/lualine.nvim',
+    cond = not_vscode,
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     event = 'VeryLazy',
     config = function()

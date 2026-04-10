@@ -1,5 +1,8 @@
+local not_vscode = require('config.env').not_vscode
+
 return {
   'folke/snacks.nvim',
+  cond = not_vscode,
   ---@type snacks.Config
   opts = {
     dashboard = {

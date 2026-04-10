@@ -1,5 +1,8 @@
+local not_vscode = require('config.env').not_vscode
+
 return {
   'christoomey/vim-tmux-navigator',
+  cond = not_vscode,
   cmd = {
     'TmuxNavigateLeft',
     'TmuxNavigateDown',

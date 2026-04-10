@@ -1,5 +1,8 @@
+local not_vscode = require('config.env').not_vscode
+
 return {
   'saghen/blink.cmp',
+  cond = not_vscode,
   event = 'VimEnter',
   version = '1.*',
   dependencies = {

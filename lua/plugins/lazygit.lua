@@ -1,5 +1,8 @@
+local not_vscode = require('config.env').not_vscode
+
 return {
   'kdheepak/lazygit.nvim',
+  cond = not_vscode,
   cmd = {
     'LazyGit',
     'LazyGitConfig',

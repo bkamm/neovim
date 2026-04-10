@@ -28,12 +28,16 @@ return {
     -- }
 
     local map = require 'mini.map'
+    local integrations = {
+      map.gen_integration.builtin_search(),
+      map.gen_integration.diagnostic(),
+    }
+    -- gitsigns.nvim is not loaded in VSCode/Cursor Neovim (editor owns git UI)
+    if not vim.g.vscode then
+      table.insert(integrations, map.gen_integration.gitsigns())
+    end
     map.setup {
-      integrations = {
-        map.gen_integration.builtin_search(),
-        map.gen_integration.diagnostic(),
-        map.gen_integration.gitsigns(),
-      },
+      integrations = integrations,
       window = {
         side = 'right',
         width = 20,
