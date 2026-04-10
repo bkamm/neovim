@@ -87,12 +87,15 @@ return {
     end, { desc = 'Harpoon: Go to file 9' })
 
     -- Toggle previous & next buffers stored within Harpoon list
-    vim.keymap.set('n', '<leader>p', function()
-      harpoon:list():prev()
-    end, { desc = 'Harpoon: [P]revious file' })
-    vim.keymap.set('n', '<leader>n', function()
-      harpoon:list():next()
-    end, { desc = 'Harpoon: [N]ext file' })
+    -- Move to next harpooned file
+    -- NOTE: IMPORTANT! this keymap (specifically the "next" keymap) conflicts with my custom navigaton mode keybinding.
+    -- before uncommenting, look into keybinding conflicts.
+    -- vim.keymap.set('n', '<leader>n', function()
+    --   harpoon:list():next()
+    -- end, { desc = 'Harpoon: [H]arpoon [N]ext file' })
+    -- vim.keymap.set('n', '<leader>p', function()
+    --   harpoon:list():prev()
+    -- end, { desc = 'Harpoon: [P]revious file' })
 
     local harpoon_extensions = require 'harpoon.extensions'
     harpoon:extend(harpoon_extensions.builtins.highlight_current_file())
