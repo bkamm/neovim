@@ -70,3 +70,38 @@ vim.keymap.set('n', '<leader>bn', '<cmd>enew<CR>', { desc = 'Open new buffer' })
 
 -- Leader J to join lines without moving cursor
 vim.keymap.set('n', '<leader>J', 'J', { desc = 'Join below line to current line' })
+
+-- Navigation mode: j/k jump 10 lines; exit with q or <Esc>
+do
+  local nav_active = false
+
+  local function leave_nav_mode()
+    if not nav_active then
+      return
+    end
+    nav_active = false
+    -- Remove temporary mappings in normal and visual mode
+    pcall(vim.keymap.del, { 'n', 'x' }, 'j')
+    pcall(vim.keymap.del, { 'n', 'x' }, 'k')
+    pcall(vim.keymap.del, 'n', 'q')
+    pcall(vim.keymap.del, 'n', '<Esc>')
+    vim.notify('Navigation mode off')
+  end
+
+  local function enter_nav_mode()
+    if nav_active then
+      vim.notify('Navigation mode already active')
+      return
+    end
+    nav_active = true
+    -- Map j/k to move by 10 lines while active
+    vim.keymap.set({ 'n', 'x' }, 'j', '10j', { silent = true, desc = 'Navigation: down 10 lines' })
+    vim.keymap.set({ 'n', 'x' }, 'k', '10k', { silent = true, desc = 'Navigation: up 10 lines' })
+    -- Exit keys while in navigation mode
+    vim.keymap.set('n', 'q', leave_nav_mode, { silent = true, desc = 'Exit navigation mode' })
+    vim.keymap.set('n', '<Esc>', leave_nav_mode, { silent = true, desc = 'Exit navigation mode' })
+    vim.notify('Navigation mode on: j/k move by 10. Press q or Esc to exit.')
+  end
+
+  vim.keymap.set('n', '<leader>n', enter_nav_mode, { desc = 'Enter Navigation Mode' })
+end
