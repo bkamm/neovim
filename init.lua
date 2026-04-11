@@ -158,6 +158,7 @@ require 'config.options'
 require 'config.functions'
 require 'config.keymaps'
 require 'config.autocmds'
+require 'config.vscode'
 
 -- Load custom floating terminal implementation (not useful inside VSCode/Cursor Neovim)
 if not vim.g.vscode then
