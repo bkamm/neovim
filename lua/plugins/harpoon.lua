@@ -1,6 +1,9 @@
+local not_vscode = require('config.env').not_vscode
+
 return {
   'ThePrimeagen/harpoon',
   branch = 'harpoon2',
+  cond = not_vscode,
   dependencies = { 'nvim-lua/plenary.nvim' },
   config = function()
     local harpoon = require 'harpoon'
