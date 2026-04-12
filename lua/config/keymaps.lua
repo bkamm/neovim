@@ -28,12 +28,28 @@ end
 -- Uncomment the below line to allow <ESC><ESC> to exit terminal mode. Currently commented out to improve lazygit workflow
 -- vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
--- nvim-treesitter repeatable move keymaps
-local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
+if not vim.g.vscode then
+  -- nvim-treesitter repeatable move keymaps
+  local ts_repeat_move = require 'nvim-treesitter.textobjects.repeatable_move'
 
--- Make ; always go to next and , always go to previous
-vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move_next, { desc = 'Repeat last Treesitter move forward' })
-vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_previous, { desc = 'Repeat last Treesitter move backward' })
+  -- Make ; always go to next and , always go to previous
+  vim.keymap.set({ 'n', 'x', 'o' }, ';', ts_repeat_move.repeat_last_move_next, { desc = 'Repeat last Treesitter move forward' })
+  vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_previous, { desc = 'Repeat last Treesitter move backward' })
+
+
+  vim.keymap.set('n', '<leader>q', '<cmd>bd<CR>', { desc = 'Close current buffer' })
+
+
+  vim.keymap.set('n', '<leader>wr', Resize_loop, { desc = 'Enter fluid window resize mode' })
+  vim.keymap.set('n', '<leader>wn', '<cmd>vnew<CR>', { desc = 'Open new vertical split' })
+  vim.keymap.set('n', '<leader>wN', '<cmd>new<CR>', { desc = 'Open new horizontal split' })
+
+
+  vim.keymap.set('n', '<leader>ta', '<cmd>AerialToggle<CR>', { desc = 'Toggle Aerial' })
+
+
+  vim.keymap.set('n', '<leader>bn', '<cmd>enew<CR>', { desc = 'Open new buffer' })
+end
 
 -- Also make f/F/t/T repeatable with ; and ,
 -- vim.keymap.set({ 'n', 'x', 'o' }, 'f', ts_repeat_move.builtin_f_expr, { expr = true })
@@ -41,7 +57,6 @@ vim.keymap.set({ 'n', 'x', 'o' }, ',', ts_repeat_move.repeat_last_move_previous,
 -- vim.keymap.set({ 'n', 'x', 'o' }, 't', ts_repeat_move.builtin_t_expr, { expr = true })
 -- vim.keymap.set({ 'n', 'x', 'o' }, 'T', ts_repeat_move.builtin_T_expr, { expr = true })
 
-vim.keymap.set('n', '<leader>q', '<cmd>bd<CR>', { desc = 'Close current buffer' })
 
 vim.keymap.set('n', '<leader>Y', function()
   local v = vim.fn.winsaveview()
@@ -51,26 +66,6 @@ end, { desc = 'Yank whole buffer into clipboard' })
 
 vim.keymap.set('n', '<leader>V', 'GVgg', { desc = 'Select whole buffer' })
 
---TODO: Look into using 'jj' to exit terminal mode
-
-vim.keymap.set('n', '<leader>wr', Resize_loop, { desc = 'Enter fluid window resize mode' })
-vim.keymap.set('n', '<leader>wn', '<cmd>vnew<CR>', { desc = 'Open new vertical split' })
-vim.keymap.set('n', '<leader>wN', '<cmd>new<CR>', { desc = 'Open new horizontal split' })
-
-vim.keymap.set('n', '<leader>cd', function()
-  vim.cmd 'Copilot disable'
-  vim.notify 'Copilot disabled'
-end, { desc = '[D]isable GitHub Copilot' })
-vim.keymap.set('n', '<leader>ce', function()
-  vim.cmd 'Copilot enable'
-  vim.notify 'Copilot enabled'
-end, { desc = '[E]nable GitHub Copilot' })
-
-if not vim.g.vscode then
-  vim.keymap.set('n', '<leader>ta', '<cmd>AerialToggle<CR>', { desc = 'Toggle Aerial' })
-end
-
-vim.keymap.set('n', '<leader>bn', '<cmd>enew<CR>', { desc = 'Open new buffer' })
 
 -- Leader J to join lines without moving cursor
 vim.keymap.set('n', '<leader>J', 'J', { desc = 'Join below line to current line' })
