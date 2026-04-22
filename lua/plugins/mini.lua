@@ -17,7 +17,7 @@ return {
     }
     require('mini.icons').setup()
     -- require('mini.tabline').setup() -- Uncomment and delete bufferline to enable more simple tabline
-    require('mini.jump2d').setup() -- Similar use case to flash.nvim, but no conflicting keymaps so keeping
+    -- require('mini.jump2d').setup() -- Similar use case to flash.nvim, so commenting out
     -- require('mini.jump').setup() -- Using flash.nvim instead
     -- local jump = require 'mini.jump'
     -- jump.setup {
@@ -27,30 +27,29 @@ return {
     --   },
     -- }
 
-    local map = require 'mini.map'
-    local integrations = {
-      map.gen_integration.builtin_search(),
-      map.gen_integration.diagnostic(),
-    }
-    -- gitsigns.nvim is not loaded in VSCode/Cursor Neovim (editor owns git UI)
     if not vim.g.vscode then
-      table.insert(integrations, map.gen_integration.gitsigns())
-    end
-    map.setup {
-      integrations = integrations,
-      window = {
-        side = 'right',
-        width = 20,
-        show_integration_count = false,
-      },
-      -- optional: nicer dots
-      symbols = { encode = map.gen_encode_symbols.dot '4x2' },
-    }
+      local map = require 'mini.map'
+      local integrations = {
+        map.gen_integration.builtin_search(),
+        map.gen_integration.diagnostic(),
+        map.gen_integration.gitsigns(),
+      }
+      map.setup {
+        integrations = integrations,
+        window = {
+          side = 'right',
+          width = 20,
+          show_integration_count = false,
+        },
+        -- optional: nicer dots
+        symbols = { encode = map.gen_encode_symbols.dot '4x2' },
+      }
 
-    -- keymaps (optional)
-    vim.keymap.set('n', '<leader>mm', map.toggle, { desc = 'MiniMap Toggle' })
-    vim.keymap.set('n', '<leader>mo', map.open, { desc = 'MiniMap Open' })
-    vim.keymap.set('n', '<leader>mc', map.close, { desc = 'MiniMap Close' })
-    vim.keymap.set('n', '<leader>mr', map.refresh, { desc = 'MiniMap Refresh' })
+      -- keymaps (optional)
+      vim.keymap.set('n', '<leader>mm', map.toggle, { desc = 'MiniMap Toggle' })
+      vim.keymap.set('n', '<leader>mo', map.open, { desc = 'MiniMap Open' })
+      vim.keymap.set('n', '<leader>mc', map.close, { desc = 'MiniMap Close' })
+      vim.keymap.set('n', '<leader>mr', map.refresh, { desc = 'MiniMap Refresh' })
+    end
   end,
 }

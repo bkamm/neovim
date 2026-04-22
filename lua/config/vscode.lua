@@ -12,8 +12,11 @@ local function cmd(command)
     end
 end
 
+vim.keymap.set('n', '<leader>e', cmd('workbench.view.explorer'), { desc = 'Open file [E]xplorer' })
+vim.keymap.set('n', '<leader>ta', cmd('outline.focus'), { desc = 'Open ou[t]line' })
 vim.keymap.set('n', '<leader>sf', cmd('workbench.action.quickOpen'), { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sg', cmd('workbench.action.findInFiles'), { desc = '[S]earch [G]rep' })
+vim.keymap.set('n', '<leader><leader>', cmd('workbench.action.showCommands'), { desc = 'open command palette' })
 
 vim.keymap.set('n', '<leader>wn', cmd('workbench.action.splitEditorRight'), { desc = 'Open new vertical split' })
 vim.keymap.set('n', '<leader>wN', cmd('workbench.action.splitEditorDown'), { desc = 'Open new horizontal split' })
