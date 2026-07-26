@@ -21,6 +21,16 @@ vim.keymap.set('n', '<leader><leader>', cmd('workbench.action.showCommands'), { 
 vim.keymap.set('n', '<leader>wn', cmd('workbench.action.splitEditorRight'), { desc = 'Open new vertical split' })
 vim.keymap.set('n', '<leader>wN', cmd('workbench.action.splitEditorDown'), { desc = 'Open new horizontal split' })
 
+vim.keymap.set('n', 'zc', cmd('editor.fold'), { desc = 'Fold' })
+vim.keymap.set('n', 'zo', cmd('editor.unfold'), { desc = 'Unfold' })
+vim.keymap.set('n', 'za', cmd('editor.toggleFold'), { desc = 'Toggle fold' })
+vim.keymap.set('n', 'zC', cmd('editor.foldRecursively'), { desc = 'Fold recursively' })
+vim.keymap.set('n', 'zO', cmd('editor.unfoldRecursively'), { desc = 'Unfold recursively' })
+vim.keymap.set('n', 'zM', cmd('editor.foldAll'), { desc = 'Fold all' })
+vim.keymap.set('n', 'zR', cmd('editor.unfoldAll'), { desc = 'Unfold all' })
+vim.keymap.set('n', 'zj', cmd('editor.gotoNextFold'), { desc = 'Next fold' })
+vim.keymap.set('n', 'zk', cmd('editor.gotoPreviousFold'), { desc = 'Previous fold' })
+
 vim.keymap.set('n', '<leader>K', cmd('editor.action.showHover'), { desc = 'Show hover documentation' })
 vim.keymap.set('n', '<leader>grd', cmd('editor.action.revealDefinition'), { desc = 'Goto [D]efinition' })
 vim.keymap.set('n', '<leader>grD', cmd('editor.action.peekDefinition'), { desc = 'Peek [D]efinition' })
