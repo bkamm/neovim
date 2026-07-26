@@ -65,3 +65,10 @@ vim.api.nvim_set_hl(0, 'CursorLineNr', { fg = '#ffcc00', bold = true })
 
 vim.o.wrap = true
 vim.o.linebreak = true
+
+-- Use Treesitter to define code folds, but keep files open by default.
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
